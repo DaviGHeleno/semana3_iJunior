@@ -8,6 +8,7 @@ import { removerProduto } from "./controller/controleEstoque";
 import { listaProdutos } from "./controller/controleEstoque";
 import { calculoValorTotal } from "./controller/controleEstoque";
 import { calculoPesoTotal } from "./controller/controleEstoque";
+import { calculoMedia } from "./controller/controleEstoque";
 
 const receber = require('prompt-sync')({sigint: true});
 
@@ -59,6 +60,10 @@ switch(valorFuncao) {
 
     case 5:
         calculoPesoTotal();
+        break;
+    
+    case 6: 
+        calculoMedia();
         break;
 }
 

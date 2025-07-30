@@ -50,6 +50,16 @@ export async function calculoPesoTotal() {
         var pesoFinal = await estoque.pesoTotal();
         console.log("Kg " + pesoFinal);
     }catch(erro){
-        console.log("Falha ao calcular valor");
+        console.log("Falha ao calcular peso");
+    }
+}
+
+
+export async function calculoMedia() {
+    try{
+        var media = await estoque.media();
+        console.log("R$" + media.toFixed(2));
+    }catch(erro){
+        console.log("Falha ao calcular media")
     }
 }

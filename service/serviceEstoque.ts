@@ -82,6 +82,20 @@ class estoqueService{
         return pesoTotal;
     }
 
+    async media(){
+        const todosProdutos: Produto[] = await readCSV(filePath);
+
+        var valorTotal = 0;
+        var numItens = 0;
+        for(var i = 0; i < todosProdutos.length; i++){
+            numItens += todosProdutos[i].quantidade;
+            valorTotal += todosProdutos[i].quantidade*todosProdutos[i].peso;
+        }
+
+        return valorTotal/numItens;
+    }
+
+
 
 }
 
