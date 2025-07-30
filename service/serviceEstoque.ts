@@ -4,6 +4,7 @@ import { Produto } from "../model/interfaceData";
 import fs from 'fs';
 
 const filePath = './model/estoque.csv';
+const receber = require('prompt-sync')({sigint: true});
 
 class estoqueService{
     async criar(data: Produto){
@@ -11,9 +12,51 @@ class estoqueService{
             throw new Error("Os dados do produto são invalidos");
         }
         else{
-            await writeCVS(filePath, [data]);
+            const produtoAtuais: Produto[] = await readCSV(filePath);
+            produtoAtuais.push(data);
+            console.log(produtoAtuais);
+            await writeCVS(filePath, produtoAtuais);
         }
     }
+
+    async remover(nome: string){
+        const produtos: Produto[] = await readCSV(filePath);
+
+        const produtoEncontrado = produtos.find(p => p.nome === nome);
+        if(!produtoEncontrado){
+            throw new Error("Produto " + nome + " não encontrado");
+            return;
+        }
+
+        console.log("Produto encontrado com sucesso:");
+        console.log(produtoEncontrado.nome + " ," + produtoEncontrado.peso + " ," + produtoEncontrado.valor + " ," + produtoEncontrado.quantidade);
+
+        let confirmacao = ''; // Initialize it
+        do {
+            confirmacao = receber("Tem certeza que deseja remover este produto? (s/n): ").toLowerCase();
+            if (confirmacao !== "s" && confirmacao !== "n") {
+                console.log("Opçao invalida");
+            }
+        } while (confirmacao !== "s" && confirmacao !== "n");
+
+
+        if (confirmacao !== 's') {
+            throw new Error("Remoção cancelada");
+            return;
+        }
+
+        const produtosAtualizados = produtos.filter(p => p.nome !== nome);
+
+        try{
+            await writeCVS(filePath, produtosAtualizados);
+        } catch(erro){
+            throw new Error("Erro ao salvar produto no CSV");
+        }
+
+
+    }
+
+
 }
 
 export default estoqueService;

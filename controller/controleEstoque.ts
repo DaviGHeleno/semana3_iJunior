@@ -13,3 +13,13 @@ export async function adicionarProduto(data: Produto) {
     }
     
 }
+
+
+export async function removerProduto(nome: string) {
+    try{
+        await estoque.remover(nome);
+        console.log("Produto " + nome + " removido com sucesso");
+    } catch(erro: any){
+        console.log(erro.message);
+    }
+}
