@@ -82,18 +82,32 @@ class estoqueService{
         return pesoTotal;
     }
 
-    async media(){
+    async mediaValor(){
         const todosProdutos: Produto[] = await readCSV(filePath);
 
         var valorTotal = 0;
         var numItens = 0;
         for(var i = 0; i < todosProdutos.length; i++){
             numItens += todosProdutos[i].quantidade;
-            valorTotal += todosProdutos[i].quantidade*todosProdutos[i].peso;
+            valorTotal += todosProdutos[i].quantidade*todosProdutos[i].valor;
         }
 
         return valorTotal/numItens;
     }
+
+    async mediaPeso(){
+        const todosProdutos: Produto[] = await readCSV(filePath);
+
+        var pesoTotal = 0;
+        var numItens = 0;
+        for(var i = 0; i < todosProdutos.length; i++){
+            numItens += todosProdutos[i].quantidade;
+            pesoTotal += todosProdutos[i].quantidade*todosProdutos[i].peso;
+        }
+
+        return pesoTotal/numItens;
+    }
+
 
 
 
