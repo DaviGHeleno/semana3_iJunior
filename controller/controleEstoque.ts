@@ -23,3 +23,13 @@ export async function removerProduto(nome: string) {
         console.log(erro.message);
     }
 }
+
+
+export async function listaProdutos() {
+    try{
+        await estoque.listar();
+    } catch(erro){
+        console.log("Falha ao listar produtos");
+    }
+    
+}

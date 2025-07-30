@@ -14,7 +14,6 @@ class estoqueService{
         else{
             const produtoAtuais: Produto[] = await readCSV(filePath);
             produtoAtuais.push(data);
-            console.log(produtoAtuais);
             await writeCVS(filePath, produtoAtuais);
         }
     }
@@ -54,6 +53,11 @@ class estoqueService{
         }
 
 
+    }
+
+    async listar(){
+        const listaProdutos: Produto[] = await readCSV(filePath);
+        console.log(listaProdutos);
     }
 
 

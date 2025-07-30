@@ -5,6 +5,7 @@ import { Produto } from "./model/interfaceData";
 import fs from 'fs';
 import { adicionarProduto } from "./controller/controleEstoque";
 import { removerProduto } from "./controller/controleEstoque";
+import { listaProdutos } from "./controller/controleEstoque";
 
 const receber = require('prompt-sync')({sigint: true});
 
@@ -44,6 +45,10 @@ switch(valorFuncao) {
         var itemRemovido = receber("Digite o nome do item que deseja remover: ");
 
         removerProduto(itemRemovido);
+        break;
+
+    case 3:
+        listaProdutos();
         break;
 
 }
