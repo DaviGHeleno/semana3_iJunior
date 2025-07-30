@@ -48,7 +48,7 @@ export async function calculoValorTotal() {
 export async function calculoPesoTotal() {
     try{
         var pesoFinal = await estoque.pesoTotal();
-        console.log("Kg" + pesoFinal);
+        console.log("Kg " + pesoFinal);
     }catch(erro){
         console.log("Falha ao calcular peso");
     }
@@ -60,7 +60,7 @@ export async function calculoMediaValor() {
         var media = await estoque.mediaValor();
         console.log("R$" + media.toFixed(2));
     }catch(erro){
-        console.log("Falha ao calcular media")
+        console.log("Falha ao calcular media");
     }
 }
 
@@ -68,8 +68,19 @@ export async function calculoMediaValor() {
 export async function calculoMediaPeso() {
     try{
         var media = await estoque.mediaPeso();
-        console.log("Kg" + media.toFixed(2));
+        console.log("Kg " + media.toFixed(2));
     }catch(erro){
-        console.log("Falha ao calcular media")
+        console.log("Falha ao calcular media");
     }
+}
+
+
+export async function numeroItensAcumulado() {
+    try{
+        var numItens = await estoque.numeroItens();
+        console.log(numItens);
+    }catch(erro){
+        console.log("Falha ao calcular itens");
+    }
+    
 }

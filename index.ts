@@ -10,6 +10,7 @@ import { calculoValorTotal } from "./controller/controleEstoque";
 import { calculoPesoTotal } from "./controller/controleEstoque";
 import { calculoMediaValor } from "./controller/controleEstoque";
 import { calculoMediaPeso } from "./controller/controleEstoque";
+import { numeroItensAcumulado } from "./controller/controleEstoque";
 
 const receber = require('prompt-sync')({sigint: true});
 
@@ -69,6 +70,10 @@ switch(valorFuncao) {
 
     case 7:
         calculoMediaPeso();
+        break;
+
+    case 8:
+        numeroItensAcumulado();
         break;
 }
 
