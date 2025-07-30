@@ -33,3 +33,12 @@ export async function listaProdutos() {
     }
     
 }
+
+export async function calculoValorTotal() {
+    try{
+        var valorFinal = await estoque.valorTotal();
+        console.log("R$" + valorFinal);
+    }catch(erro){
+        console.log("Falha ao calcular valor");
+    }
+}

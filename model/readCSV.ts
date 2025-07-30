@@ -9,13 +9,12 @@ const readCSV = async (filePath: string): Promise<Produto[]> => {
 
     fs.createReadStream(filePath)
       .pipe(csv())
-      .on('data', (data: any) => { // Use 'any' temporarily to handle raw data from parser
-        // Transform keys to lowercase to match Produto interface
+      .on('data', (data: any) => { 
         const transformedData: Produto = {
           nome: data['NOME'],
-          peso: parseFloat(data['PESO Kg']), // Ensure numbers are parsed
-          valor: parseFloat(data['VALOR $']), // Ensure numbers are parsed
-          quantidade: parseFloat(data['QUANTIDADE']), // Ensure numbers are parsed
+          peso: parseFloat(data['PESO Kg']), 
+          valor: parseFloat(data['VALOR $']), 
+          quantidade: parseFloat(data['QUANTIDADE']), 
         };
         results.push(transformedData);
       })

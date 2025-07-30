@@ -60,6 +60,17 @@ class estoqueService{
         console.log(listaProdutos);
     }
 
+    async valorTotal(){
+        const todosProdutos: Produto[] = await readCSV(filePath);
+
+        var valorTotal = 0;
+        for(var i = 0; i < todosProdutos.length; i++){
+            valorTotal += todosProdutos[i].quantidade*todosProdutos[i].valor;
+        }
+
+        return valorTotal;
+    }
+
 
 }
 
