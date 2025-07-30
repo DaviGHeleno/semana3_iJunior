@@ -34,10 +34,21 @@ export async function listaProdutos() {
     
 }
 
+
 export async function calculoValorTotal() {
     try{
         var valorFinal = await estoque.valorTotal();
         console.log("R$" + valorFinal);
+    }catch(erro){
+        console.log("Falha ao calcular valor");
+    }
+}
+
+
+export async function calculoPesoTotal() {
+    try{
+        var pesoFinal = await estoque.pesoTotal();
+        console.log("Kg " + pesoFinal);
     }catch(erro){
         console.log("Falha ao calcular valor");
     }
